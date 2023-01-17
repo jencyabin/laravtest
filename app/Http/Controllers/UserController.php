@@ -20,7 +20,7 @@ class UserController extends Controller
     //     $this->middleware('auth');
     // }  
     
-    public function index(){
+    public function index(){  //listing users
         $users = User::join('countries', 'users.country_id', '=', 'countries.id')
                         ->where('users.id', '!=',1)
                         ->select(['users.*', 'countries.name as country'])
@@ -29,14 +29,14 @@ class UserController extends Controller
         return view('home',['users'=>$users]);
     }
 
-    public function add()
+    public function add()  // display the new user registraion page
     {     
         $countries          = Country::orderBy('name')->get();     
         return view('add', ['countries'=>$countries]);
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request) // store the values of registered user to db
     {
        // dd($request);
         $validatedData = $request->validate([
