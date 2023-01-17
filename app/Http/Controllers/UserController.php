@@ -15,7 +15,7 @@ use Auth;
 class UserController extends Controller
 {
      
-    // public function __construct()
+    // public function __construct() // for authentication 
     // {
     //     $this->middleware('auth');
     // }  
@@ -56,7 +56,7 @@ class UserController extends Controller
                                             'confirmpassword' =>'required|same:password',
                                             ]);
         $user               = new User();
-        $user->name         = ucfirst($request->post('first_name')). " ". ucfirst($request->post('last_name'));
+        $user->name         = ucfirst($request->post('first_name')). " ". ucfirst($request->post('last_name'));// first letter to uppercase
         $user->email        = $request->post('email');
         $user->gender       = $request->post('gender');
         $user->country_id   = $request->post('country');
@@ -72,24 +72,23 @@ class UserController extends Controller
         return redirect(route('list'))->with('status', 'User Added  Successfully');
     }
 
-    public function edit($id)
+    public function edit($id)   //load the edit page
     {    
         $users              = User::join('countries', 'users.country_id', '=', 'countries.id')
                                     ->where('users.id', $id)
                                     ->select(['users.*', 'countries.name as country'])
                                     ->first();
-
         $name               = explode(" ", $users->name);
         $fname              = $name[0];
         $lname              = $name[1];
-        $countries          = Country::orderBy('name')->get();     
+        $countries          = Country::orderBy('name')->get();   //list all countries from db   
         $data               = ['users'=>$users,'fname'=>$fname,'lname'=>$lname,'countries'=>$countries];
        // dd($data);
        
         return view('edit')->with($data);
     }
 
-    public function update(Request $request)
+    public function update(Request $request) //update the user details
     {
        // dd($request);
         $id                 = $request->userid; //dd($id);
@@ -104,14 +103,14 @@ class UserController extends Controller
         return redirect(route('list'))->with('status', 'User Details Updated  Successfully');
     }
 
-    public function destroy(User $id)
+    public function destroy(User $id) //deleting the user
     {   // dd($id); 
         $id->delete(); 
         return redirect(route('list'))->with('status', 'User Deleted  Successfully');
   
     }
 
-    public function checkEmail(Request $request)
+    public function checkEmail(Request $request) // check whether email id already exists in db
     { 
         if($request->user_id){
             $userid     = $request->user_id;
@@ -141,6 +140,5 @@ class UserController extends Controller
             }           
         }         
     }
-
 
 }

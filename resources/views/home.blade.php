@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -20,19 +19,14 @@
                     </div>                     
                 </div>
                   
-                <div class="card-body">
-                
+                <div class="card-body">                
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                    @endif
+                    @endif                  
 
-                   
-
-                    <div class="card">
-                    
-                          
+                    <div class="card">                   
                           <!-- /.card-header -->
                           <div class="card-body table-responsive p-0">
                             <table class="table table-hover table-striped text-nowrap">
@@ -40,73 +34,48 @@
                                 <tr>
                                   <!-- <th>ID</th> -->
                                   <th class="color-black">Username</th> 
-                                  <!-- <th class="color-black">Username</th> -->
                                   <th class="color-black">Email</th>
-                                  <th class="color-black">Gender</th>
-                                 
+                                  <th class="color-black">Gender</th>                                 
                                   <th class="color-black">Country</th> 
                                 </tr>
                               </thead>
                               <tbody id="user_list"> 
                                   @if (!empty($users)  && $users->count())
                                       @foreach($users as $user)                                    
-                                          <tr>
-                                          <td>{{$user->name}}</td>
-                                          <td>{{$user->email}}</td>
-                                          <td>{{$user->gender}}</td>
-                                          <td>{{$user->country}}</td>
-                                          <td>
-                                            <a href="{{ route('edit_user',$user->id) }}">
-                                                       <input type="image" class="edit_img" id="edituser"  src="{{asset('/image/edit.png')}}"  value="{{ $user->id }}"/>
-
-                                                  </a>
+                                        <tr>
+                                            <td>{{$user->name}}</td>
+                                            <td>{{$user->email}}</td>
+                                            <td>{{$user->gender}}</td>
+                                            <td>{{$user->country}}</td>
+                                            <td>
+                                                <a href="{{ route('edit_user',$user->id) }}">
+                                                        <input type="image" class="edit_img" id="edituser"  src="{{asset('/image/edit.png')}}"  value="{{ $user->id }}"/>
+                                                </a>
                                             </td> 
                                             <td>
-                                                    <input type="image" id="deleteuser"  class="edit_img"  src="{{asset('/image/delete.png')}}" value="{{ $user->id }}"/>
-                                                </td>  
-                                          </tr>
+                                                <input type="image" id="deleteuser"  class="edit_img"  src="{{asset('/image/delete.png')}}" value="{{ $user->id }}"/>
+                                            </td>  
+                                        </tr>
                                       @endforeach 
                                   @else
-                                          <tr>
+                                      <tr>
                                           <td>No Records Found </td>
-                                          </tr>
+                                      </tr>
                                   @endif                                      
                               </tbody>
                             </table> 
-
                             <div  style="height:50px;float: right;">
                                     {!! $users->links("pagination::bootstrap-4") !!}
-                                </div>  
-                            
-                                                
+                            </div>                                                 
                           </div>
-                         
                           <!-- /.card-body -->
                         </div>
-
-
-                    <!-- <div class="col-md-12 mt-3">
-                        <div class="todo-list text-center">
-                            
-                            @foreach($users as $user)
-                                <div class="todo-content border border-dark p-2 mb-2 d-flex justify-content-between">
-                                    <div>
-                                        <span class="lead">{{$user->name}}</span>
-                                    </div>
-                                    <div>
-                                        
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 
-
-    <!-- delete model -->
+ <!-- delete model -->
 <div class="modal fade" id="deleteModel" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content model-common-height">
@@ -130,12 +99,5 @@
   </div>
 </div>
 <!-- end delete model -->
-
 </div>
-
-
-
-
-
 @endsection
-

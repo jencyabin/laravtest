@@ -20,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 //Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
+//Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/list', [UserController::class, 'index'])->name('list');
 
@@ -37,4 +35,3 @@ Route::put('/update', [UserController::class, 'update'])->name('update_user');
 Route::post('/delete/{id}', [UserController::class, 'destroy'])->name('delete_user');
 
 Route::post('/user/checkEmail', [UserController::class, 'checkEmail'])->name('checkmail');
-

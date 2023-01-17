@@ -3,10 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
     <style>
         .error {
@@ -35,31 +33,25 @@
             border-color: #04703e !important;
         }
         page-link {
-    
-    color: #dc3545 !important;
+            color: #dc3545 !important;
         }
         .edit_img{
-   height: 20px;
-    width: 20px;
-}
+            height: 20px;
+            width: 20px;
+        }
     </style>
-
-    <script>
-    var APP_URL = {!! json_encode(url('/')) !!}
-
-    </script>
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery.js') }}"></script><!-- JEN download & include jquery3.6.3 file -->
-    <script src="{{ asset('js/jquery.validate.min.js') }}"></script><!-- JEN download & include jquery validationfile -->
-
+    <script>
+        var APP_URL = {!! json_encode(url('/')) !!}
+    </script>
+    <script src="{{ asset('js/jquery.js') }}"></script><!--  download & include jquery3.6.3 file -->
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script><!--  download & include jquery validationfile -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/user.js') }}" ></script><!-- JEN inclue js file of user-->
-
+    <script src="{{ asset('js/user.js') }}" ></script><!--  inclue js file of user-->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
