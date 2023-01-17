@@ -59,7 +59,13 @@ class UserController extends Controller
         $user->name         = ucfirst($request->post('first_name')). " ". ucfirst($request->post('last_name'));
         $user->email        = $request->post('email');
         $user->gender       = $request->post('gender');
-        $user->country_id   = $request->post('country');     
+        $user->country_id   = $request->post('country');
+        if($request->post('newsletter') =='on')    {
+            $user->newsletter  = 1;
+        } 
+        else{
+            $user->newsletter  = 0; 
+        }
         $user->password     = Hash::make($request->post('password'));             
      
         $user->save();

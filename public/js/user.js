@@ -164,11 +164,25 @@ $(document).on('click', '#deleteuser', function(event) {
   })
 
   
-  $.validator.addMethod("pwcheck",
+  $.validator.addMethod("pwcheck",        //checking password strength
   function(value, element) {
     return /^.*(?=.{8,30}$)(?=.*\d)(?=.*[a-z])(?=.*[@#$%&]).*$/ //(?=.*[A-Z])
     .test(value);
 },"please enter strong password");
+
+$(document).ready(function() {            // enable & disbale submit button on clicking on terms and conditions
+    $('#termconditions').click(function() {
+      if ($(this).is(':checked')) {
+        $('#submit').removeAttr('disabled');
+      } else {
+        $('#submit').attr('disabled', 'disabled');
+      }
+  });
+});
+
+
+
+
         
 
 

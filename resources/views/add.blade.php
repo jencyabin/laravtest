@@ -130,24 +130,43 @@
                                                     <option value="{{$country->id}}"> {{$country->name}} </option>
                                                     @endforeach  
                                     </select> 
-
-
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div>                           
+                        </div>
+                        <div class="row mb-3">
+                        <label for="name" class="col-md-4 col-form-label text-md-end"></label>
 
-                           
+                            <div class="col-md-6">
+                                <input type="checkbox" name="conditions"  id="termconditions" >
+                                <label for="name" >I agree with terms and condition</label>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>                           
                         </div>
 
-
-                        
+                        <div class="row mb-3">
+                        <label for="name" class="col-md-4 col-form-label text-md-end"></label>
+                            <div class="col-md-6">
+                                <input type="checkbox" name="newsletter"  id="newsletter" >
+                                <label for="name" >I want to receive the newsletter</label>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>                           
+                        </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                            <input type="submit" class="btn btn-success btn-block" value="Submit"/>
+                            <input type="submit" class="btn btn-success btn-block" id="submit" value="Submit" disabled/>
 
                                 <!-- <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
